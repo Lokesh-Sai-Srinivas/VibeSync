@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   vibesync:
     build: .
@@ -12,10 +10,13 @@ services:
     environment:
       - NODE_ENV=development
       - EXPO_DEVTOOLS_LISTEN_ADDRESS=0.0.0.0
+      - REACT_NATIVE_PACKAGER_HOSTNAME=192.168.1.51 # Updated with host IP from ipconfig
     volumes:
       - .:/app
       - /app/node_modules
     restart: unless-stopped
+    stdin_open: true # Allows interactive mode
+    tty: true
     networks:
       - vibesync-network
 
